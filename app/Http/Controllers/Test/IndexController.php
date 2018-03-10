@@ -79,8 +79,8 @@ class IndexController extends Controller
 
     public function hk_key(Request $request)
     {
-        $key = input('get.n');
-        $ks = input('get.k');
+        $key = $request->input('n');;
+        $ks = $request->input('k');;
 
         //多开,1多。。。0单
         if(!empty($ks)){
@@ -115,7 +115,8 @@ class IndexController extends Controller
 
                         if($duokai == 0 && $hkyun_k['code'] == 200){
                             //$i = $i_count+1;
-                            return json(array('code'=>201,'msg'=>'单条保存成功','msgs'=>$hkyun_k['msg']));
+                            //return json_encode(array('code'=>201,'msg'=>'单条保存成功','msgs'=>$hkyun_k['msg']));
+                            return '单条保存成功';
                         }
                     }
                     
@@ -123,16 +124,19 @@ class IndexController extends Controller
                 }
                 unset($arr_a);
                 //dump($vod_arrs);
-                return json(array('code'=>200,'msg'=>'多条保存成功'));
+                //return array('code'=>200,'msg'=>'多条保存成功');
+                return '多条保存成功';
             }else{
-                return json(array('code'=>103,'msg'=>'搜索结果为0'));
+                //return array('code'=>103,'msg'=>'搜索结果为0');
+                return '搜索结果为0';
             }
 
 
             
 
         }else{
-            return json(array('code'=>101,'msg'=>'关键词不存在'));
+            //return array('code'=>101,'msg'=>'关键词不存在');
+            return '关键词不存在';
         }
 
 
@@ -142,9 +146,9 @@ class IndexController extends Controller
 
     public function hk_bt_url($text='magnet:?xt=urn:btih:bc4b142021280b09cf7e3a85ec5c0057d81c2dc9')
     {
-        $cookie = 'Cookie:yd_cookie=7e9f1c06-c2a9-4587102a53e60d7501e2e772fff6085803d2; yd_srvbl=517492deae75a914af668650a723f1ae; ASP.NET_SessionId=bp5fxyiwju5mt0amxamijatl; __guid=35485052.3732207620776858000.1520438026796.3047; HKUSER=UserName=dbg8685&UserPassword=dbg8685; monitor_count=2';
+        $cookie = 'Cookie:yd_cookie=bd129e5c-3f00-49b2150535871a5056f5cc6f6affabe0c577; ASP.NET_SessionId=hxtguyphefg1nbgvhzr04sna; __guid=35485052.197201346687323360.1518622313056.7651; yd_srvbl=06549327c213b4c7ca848ec090b1c20f; HKUSER=UserName=dbg8685&UserPassword=dbg8685; monitor_count=2';
         $bth='解析';
-        $vie='QVwBPyLGYLbozhbKFWTuD/7hLaLL41+gjMdhjZbwt6FEZMbefcrqjy8yzZ5SQIhn02nqXbabpGXcboSxPg4FnBuedghhUWhiUQmf+rawMjP2w6S5dt106NWmmrp6CNtBGrHEyTXcu0pSnuIRb4+xNSoSQwoXQque2ieJVzPrCKS3khwGZg9KznlaR+dKN0cPQ4vQxXBBacr3Kbnp0XhDFm5aYhBdcEnI4DvJ1nZ2w9nducxmxX5V7gbkubXmY1IaoQayFaUfkIiVgmvl+pvP7I6NnH9ShJvgxGmzxXtUsd8ULlj1TXUh8snV2VKs3jR53+TWi/kgI8pHgz3L7cWnIFh6fBuF50XDLErowNPZDRpcDYaQ3db4BjotVIC9yJ5FzwTM9ZMlLWHFl3U3Pom2h/a9D3Qzg8Zju7zzsF2Qd0KZgeEmBQsGtrEMFS5ZP5eiriCzE2nK+rigRMzy';
+        $vie='ACDw3DY3Ap2UgJKtwE0FPr7q7eNLF1TiFj46ANUyjb2AZHcf/k25Tj6I6ShIdOCUyfwWSvGMk8bACzncj7WhElHl8mprElDQLZQW6R0aBu94uu2HX8RwAEzqit6C+zO+ygSLlERqX6EeDQrwxKJ+UODjQG8ZbbZSqi7odcw2PKi5kaMCV74pRzmcRJOyq8qEtMsAJ1HowIzvChLEXR7+bnPagFBcgJvuMu3FMiIG5y1nHuHpw7gG0MpuBeEoVBl4L/TRWfpDnPOkrS2UBjNKAlsT2fi967j4QMKpr0C+vC45yW+P3USWKG8zwEZ1Z8U21uADMhlHW+bc3XFTMRd+UZpXBcXa9ocEp99xIj4QaKI1UKW6z0VAiQyhPbClbvYaagfVieLQQPPqUI85BSXHPxVGybbpByF8+xka1RVbiXO/qJ5cdjs8gxh7ThfXavR4hJ2/vfEbL37e7bHo';
 
 
         $url = 'http://lx.heikeyun.net/Main.aspx';
